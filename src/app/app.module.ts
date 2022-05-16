@@ -18,6 +18,7 @@ import { MatSortModule } from '@angular/material/sort';
 import {HttpClientModule} from "@angular/common/http";
 import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
 import {InMemoryDataService} from "./in-memory-data.service";
+import {environment} from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import {InMemoryDataService} from "./in-memory-data.service";
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false}),
+    environment.production ? [] : HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false}),
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
