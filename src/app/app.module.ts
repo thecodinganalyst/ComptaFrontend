@@ -15,6 +15,9 @@ import { ChartOfAccountsComponent } from './chart-of-accounts/chart-of-accounts.
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import {HttpClientModule} from "@angular/common/http";
+import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
+import {InMemoryDataService} from "./in-memory-data.service";
 
 @NgModule({
   declarations: [
@@ -26,6 +29,8 @@ import { MatSortModule } from '@angular/material/sort';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false}),
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
