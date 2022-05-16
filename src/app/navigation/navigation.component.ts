@@ -22,4 +22,8 @@ export class NavigationComponent {
     private breakpointObserver: BreakpointObserver,
   ) {}
 
+  updateTitle(newTitle: string){
+    this.title = newTitle;
+  }
+
 }
