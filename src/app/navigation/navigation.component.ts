@@ -18,6 +18,12 @@ export class NavigationComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+  ) {}
+
+  updateTitle(newTitle: string){
+    this.title = newTitle;
+  }
 
 }
