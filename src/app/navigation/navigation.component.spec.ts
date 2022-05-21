@@ -9,6 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { NavigationComponent } from './navigation.component';
 import {render, screen} from "@testing-library/angular";
+import {of} from "rxjs";
 
 describe('NavigationComponent', () => {
   let component: NavigationComponent;
@@ -42,10 +43,25 @@ describe('NavigationComponent', () => {
 });
 
 describe('NavigationComponent', () => {
-  it('should render header according to title', async () => {
+  it('should render application name at the toolbar', async () => {
     await render(NavigationComponent, {
-      componentProperties: { title: 'hello'}
+      componentProperties: { application: 'hello'}
     })
-    expect(screen.getByRole('banner').innerHTML).toBe('hello');
+    expect(screen.getByTestId('header').innerHTML).toBe('hello');
   })
+
+  it('should not show the application name in the sidenav in desktop mode', async () => {
+    await render(NavigationComponent, {
+      componentProperties: { isHandset$: of(false), application: 'hello'}
+    })
+    expect(screen.queryByTestId('sidenav-header')).toBeFalsy();
+  })
+
+  it('should show the application name in the sidenav in handset mode', async () => {
+    await render(NavigationComponent, {
+      componentProperties: { isHandset$: of(true), application: 'hello'}
+    })
+    expect(screen.getByTestId('sidenav-header').innerHTML).toBe('hello');
+  })
+
 });
