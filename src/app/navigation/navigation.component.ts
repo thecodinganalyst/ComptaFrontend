@@ -9,8 +9,7 @@ import { map, shareReplay } from 'rxjs/operators';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent {
-  @Input() application = 'Compta';
-  @Input() title?: string;
+  @Input() application?: string;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -21,9 +20,5 @@ export class NavigationComponent {
   constructor(
     private breakpointObserver: BreakpointObserver,
   ) {}
-
-  updateTitle(newTitle: string){
-    this.title = newTitle;
-  }
 
 }
