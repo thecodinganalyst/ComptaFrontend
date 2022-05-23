@@ -18,7 +18,9 @@ export class ChartOfAccountsDataSource extends DataSource<Account> {
   data$: Account[] = [];
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
-  apiUrl = environment.apiUrl.account;
+  accountUrl = environment.apiUrl.account;
+  groupsUrl = environment.apiUrl.groups;
+  currenciesUrl = environment.apiUrl.currencies;
 
   constructor(
     private http: HttpClient
@@ -27,9 +29,23 @@ export class ChartOfAccountsDataSource extends DataSource<Account> {
   }
 
   getAccounts(): Observable<Account[]> {
-    return this.http.get<Account[]>(this.apiUrl)
+    return this.http.get<Account[]>(this.accountUrl)
       .pipe(
         catchError(this.handleError<Account[]>('getAccounts', []))
+      );
+  }
+
+  getGroups(): Observable<string[]> {
+    return this.http.get<string[]>(this.groupsUrl)
+      .pipe(
+        catchError(this.handleError<string[]>('getGroups', []))
+      );
+  }
+
+  getCurrencies(): Observable<string[]> {
+    return this.http.get<string[]>(this.currenciesUrl)
+      .pipe(
+        catchError(this.handleError<string[]>('getCurrencies', []))
       );
   }
 

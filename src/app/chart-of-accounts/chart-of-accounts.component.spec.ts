@@ -9,6 +9,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {TestbedHarnessEnvironment} from "@angular/cdk/testing/testbed";
 import {HarnessLoader} from "@angular/cdk/testing";
 import {MatHeaderRowHarness} from "@angular/material/table/testing";
+import {AppRoutingModule} from "../app-routing.module";
 
 describe('ChartOfAccountsComponent', () => {
   let component: ChartOfAccountsComponent;
@@ -19,6 +20,7 @@ describe('ChartOfAccountsComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ ChartOfAccountsComponent ],
       imports: [
+        AppRoutingModule,
         HttpClientModule,
         NoopAnimationsModule,
         MatPaginatorModule,

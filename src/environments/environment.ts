@@ -6,7 +6,9 @@ export const environment = {
   production: false,
   apiHost: '',
   apiUrl: {
-    account: 'api/accounts'
+    account: 'api/accounts',
+    groups: 'api/groups',
+    currencies: 'api/currencies'
   },
   dateFormat: 'yyyy-MM-dd'
 };

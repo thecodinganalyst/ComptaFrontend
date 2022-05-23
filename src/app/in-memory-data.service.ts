@@ -11,7 +11,9 @@ export class InMemoryDataService implements InMemoryDbService{
       {id: 'cash', name: 'Cash', currency: 'SGD', group: 'Assets', openBal: 0, openDate: new Date(2020, 0, 1)},
       {id: 'food', name: 'Food', group: 'Expenses'}
     ];
-    return {accounts};
+    const groups: string[] = ['Assets', 'Liabilities', 'Expense', 'Revenue'];
+    const currencies: string[] = ['SGD', 'MYR', 'USD']
+    return {accounts, groups, currencies};
   }
 
 }
